@@ -1,0 +1,135 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// written
+model Hotel {
+  id             Int             @id @default(autoincrement())
+  name           String
+  stars          Int
+  description    String
+  additionalInfo String?
+  photo          String[]
+  hotelServices  HotelServices[]
+  rooms          Room[]
+  country        String
+  city           String?
+  address        String          @unique
+  reviewHotels   ReviewHotels[]
+  legalAddress   String[]        @unique
+  policy         DateTime[]
+}
+
+// written
+model Room {
+  id             Int            @id @default(autoincrement())
+  name           String
+  cost           Int
+  description    String
+  reviewRooms    ReviewRooms[]
+  roomServices   RoomServices[]
+  photo          String[]
+  numberOfGuests Int
+
+  Hotel   Hotel? @relation(fields: [hotelId], references: [id])
+  hotelId Int
+
+  favouritHotelsOrRooms   User?   @relation("favouritHotelsOrRoomsId", fields: [favouritHotelsOrRoomsId], references: [id])
+  favouritHotelsOrRoomsId String?
+
+  historyOfBooking   User?   @relation("historyOfBookingId", fields: [historyOfBookingId], references: [id])
+  historyOfBookingId String?
+}
+
+// written
+model RoomServices {
+  id   Int      @id @default(autoincrement())
+  pool String[]
+
+  Room   Room? @relation(fields: [roomId], references: [id])
+  roomId Int?
+}
+
+model HotelServices {
+  id      Int      @id @default(autoincrement())
+  terrace String[]
+
+  Hotel    Hotel @relation(fields: [hotelsId], references: [id])
+  hotelsId Int
+}
+
+model ReviewHotels {
+  id Int @id @default(autoincrement())
+
+  Hotel    Hotel? @relation(fields: [hotelsId], references: [id])
+  hotelsId Int
+}
+
+model ReviewRooms {
+  id Int @id @default(autoincrement())
+
+  Room    Room? @relation(fields: [roomsId], references: [id])
+  roomsId Int?
+}
+
+model Account {
+  id                String  @id @default(cuid())
+  userId            String
+  type              String
+  provider          String
+  providerAccountId String
+  refresh_token     String? @db.Text
+  access_token      String? @db.Text
+  expires_at        Int?
+  token_type        String?
+  scope             String?
+  id_token          String? @db.Text
+  session_state     String?
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@unique([provider, providerAccountId])
+}
+
+model Session {
+  id           String   @id @default(cuid())
+  sessionToken String   @unique
+  userId       String
+  expires      DateTime
+  user         User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+model User {
+  id            String    @id @default(cuid())
+  name          String?
+  surname       String?
+  gender        String?
+  city          String?
+  email         String?   @unique
+  emailVerified DateTime?
+  phone         String?
+  dateOfBirth   DateTime?
+  image         String?
+
+  favouritHotelsOrRooms Room[] @relation("favouritHotelsOrRoomsId")
+  historyOfBooking      Room[] @relation("historyOfBookingId")
+
+  accounts Account[]
+  sessions Session[]
+}
+
+model VerificationToken {
+  identifier String
+  token      String   @unique
+  expires    DateTime
+
+  @@unique([identifier, token])
+}
