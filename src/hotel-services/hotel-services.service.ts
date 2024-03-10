@@ -1,42 +1,71 @@
-// nest
 import { Injectable } from '@nestjs/common';
-
-// service
-import { PrismaService } from 'src/prisma.service';
-import {
-  CreateHotelServicesDto,
-  DeleteHotelServicesDto,
-  GetOneHotelServicesDto,
-  UpdateHotelServicesDto,
-} from './dto/hotel-services.dto';
+import { CreateHotelServiceInput } from './dto/create-hotel-service.input';
+import { UpdateHotelServiceInput } from './dto/update-hotel-service.input';
+import { PrismaService } from 'nestjs-prisma';
 
 @Injectable()
 export class HotelServicesService {
   constructor(private prisma: PrismaService) { }
 
-  getAll() {
-    return this.prisma.hotelServices.findMany();
+  create(createHotelServiceInput: CreateHotelServiceInput) {
+    return this.prisma.hotelServices.create({ data: createHotelServiceInput });
   }
 
-  getOne(getOneDto: GetOneHotelServicesDto) {
-    return this.prisma.hotelServices.findFirst({ where: { id: +getOneDto.id } });
-  }
-
-  createHotelServices(createDto: CreateHotelServicesDto) {
-    return this.prisma.hotelServices.create({ data: createDto });
-  }
-
-  updateHotelServices(
-    updateParams: UpdateHotelServicesDto,
-    updateDto: UpdateHotelServicesDto,
-  ) {
-    return this.prisma.hotelServices.update({
-      where: { id: +updateParams.id },
-      data: updateDto,
+  findAll() {
+    return this.prisma.hotelServices.findMany({
+      include: {
+        hotelServicesAnimals: true,
+        hotelServicesBeautyAndHealth: true,
+        hotelServicesEntertainment: true,
+        hotelServicesBusiness: true,
+        hotelServicesChildren: true,
+        hotelServicesGeneral: true,
+        hotelServicesInternet: true,
+        hotelServicesInTheRooms: true,
+        hotelServicesMeals: true,
+        hotelServicesParking: true,
+        hotelServicesSanitaryMeasures: true,
+        hotelServicesServicesAndAmenities: true,
+        hotelServicesSports: true,
+        hotelServicesStaffSpeaks: true,
+        hotelServicesTransfer: true,
+      }
     });
   }
 
-  deleteHotelServices(deleteParams: DeleteHotelServicesDto) {
-    return this.prisma.hotelServices.delete({ where: { id: +deleteParams.id } });
+  findOne(id: number) {
+    return this.prisma.hotelServices.findFirst({
+      where: { id },
+      include: {
+        hotelServicesAnimals: true,
+        hotelServicesBeautyAndHealth: true,
+        hotelServicesEntertainment: true,
+        hotelServicesBusiness: true,
+        hotelServicesChildren: true,
+        hotelServicesGeneral: true,
+        hotelServicesInternet: true,
+        hotelServicesInTheRooms: true,
+        hotelServicesMeals: true,
+        hotelServicesParking: true,
+        hotelServicesSanitaryMeasures: true,
+        hotelServicesServicesAndAmenities: true,
+        hotelServicesSports: true,
+        hotelServicesStaffSpeaks: true,
+        hotelServicesTransfer: true,
+      }
+    });
+  }
+
+  update(id: number, updateHotelServiceInput: UpdateHotelServiceInput) {
+    return this.prisma.hotelServices.update({
+      where: { id },
+      data: updateHotelServiceInput,
+    });
+  }
+
+  remove(id: number) {
+    return this.prisma.hotelServices.delete({
+      where: { id },
+    });
   }
 }

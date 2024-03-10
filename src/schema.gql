@@ -1,0 +1,715 @@
+# ------------------------------------------------------
+# THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
+# ------------------------------------------------------
+
+input CreateHotelInput {
+  additionalInfo: String
+  address: String!
+  city: String
+  country: String!
+  description: String!
+  legalAddress: String!
+  name: String!
+  photo: [String!]
+  policy: [String!]!
+  stars: Int!
+  type: String!
+}
+
+input CreateHotelServiceInput {
+  hotelId: Int!
+  id: Int!
+}
+
+input CreateHotelServicesAnimalInput {
+  accommodationWithPetsIsPaidSeparately: String!
+  image: String!
+}
+
+input CreateHotelServicesBeautyAndHealthInput {
+  beautySalonIsPaidSeparately: String!
+  firstAidKit: String!
+  image: String!
+  massageIsPaidSeparately: String!
+}
+
+input CreateHotelServicesBusinessInput {
+  conferenceHall: String!
+  image: String!
+  organizationOfMeetingsAndBanquets: String!
+  videoRentalAndComputerEquipment: String!
+  xerox: String!
+}
+
+input CreateHotelServicesChildrenInput {
+  accommodationIsSuitableForFamiliesChildren: String!
+  babysittingAndChildCare: String!
+  childrensTvChannels: String!
+  image: String!
+}
+
+input CreateHotelServicesEntertainmentInput {
+  image: String!
+  suitableForFestiveEvents: String!
+}
+
+input CreateHotelServicesGeneralInput {
+  airConditioning: String!
+  computer: String!
+  designHotel: String!
+  dishwasherCar: String!
+  earlyCheckIn: String!
+  elevator: String!
+  expeditedCheckInAndCheckOut: String!
+  fireExtinguisher: String!
+  fullDayHourFrontDesk: String!
+  heating: String!
+  image: String!
+  individualCheckInAndCheckOut: String!
+  lateCheckOut: String!
+  nonSmokingHotel: String!
+  washingMachine: String!
+}
+
+input CreateHotelServicesInTheRoomInput {
+  bridalSuite: String!
+  cableTv: String!
+  familyRooms: String!
+  image: String!
+  musicCenter: String!
+  nonSmokingRooms: String!
+  refrigerator: String!
+  roomService: String!
+  roomsForAllergySufferers: String!
+  safeInTheRoom: String!
+  smokingRooms: String!
+  tv: String!
+  vipAmenitiesInTheRoom: String!
+}
+
+input CreateHotelServicesInternetInput {
+  freeWiFi: String!
+  image: String!
+}
+
+input CreateHotelServicesMealInput {
+  breakfastInTheRoom: String!
+  freeTeaOrCoffee: String!
+  fullBoardIsPossible: String!
+  halfBoardIsPossible: String!
+  image: String!
+  kitchen: String!
+  microwave: String!
+  restaurant: String!
+}
+
+input CreateHotelServicesParkingInput {
+  image: String!
+  parkingIsPaidSeparately: String!
+}
+
+input CreateHotelServicesSanitaryMeasureInput {
+  enhancedDisinfectionMeasures: String!
+  image: String!
+  personalProtectiveEquipmentForGuests: String!
+  personalProtectiveEquipmentForStaff: String!
+  temperatureControlForGuests: String!
+  temperatureControlForStaff: String!
+}
+
+input CreateHotelServicesServicesAndAmenityInput {
+  conciergeServices: String!
+  dryCleaningIsPaidSeparately: String!
+  hairDryerOnRequest: String!
+  image: String!
+  iron: String!
+  ironingFacilities: String!
+  ironingServicesArePaidSeparately: String!
+  laundryIsPaidSeparately: String!
+  luggageStorage: String!
+  telephone: String!
+}
+
+input CreateHotelServicesSportInput {
+  gym: String!
+  image: String!
+}
+
+input CreateHotelServicesStaffSpeakInput {
+  image: String!
+  inEnglish: String!
+  inRussian: String!
+}
+
+input CreateHotelServicesTransferInput {
+  image: String!
+  transfer: String!
+}
+
+input CreateReviewHotelInput {
+  avatar: String!
+  country: String!
+  date: DateTime!
+  name: String!
+  rating: Int!
+  reviews: String!
+}
+
+input CreateReviewRoomInput {
+  avatar: String!
+  country: String!
+  date: String!
+  name: String!
+  rating: Int!
+  reviews: String!
+}
+
+input CreateRoomInput {
+  cost: Int!
+  description: String!
+  name: String!
+  numberOfGuests: Int!
+  photo: [String!]!
+}
+
+input CreateRoomServiceInput {
+  pool: [String!]!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Hotel {
+  additionalInfo: String!
+  address: String!
+  city: String
+  country: String!
+  description: String!
+  hotelService: [HotelService!]!
+  hotelServices: [HotelService!]!
+  id: Int!
+  legalAddress: String!
+  name: String!
+  photo: [String!]!
+  policy: [String!]!
+  reviewHotels: [ReviewHotel!]!
+  rooms: [Room!]!
+  servicesArg: String
+  sorting: String
+  stars: Int!
+  type: String!
+}
+
+type HotelService {
+  hotelId: Int!
+  hotelServicesAnimal: [HotelServicesAnimal]
+  hotelServicesAnimals: [HotelServicesAnimal]
+  hotelServicesBeautyAndHealth: [HotelServicesBeautyAndHealth]
+  hotelServicesBeautyAndHealths: [HotelServicesBeautyAndHealth]
+  hotelServicesBusiness: [HotelServicesBusiness]
+  hotelServicesBusinesses: [HotelServicesBusiness]
+  hotelServicesChildren: [HotelServicesChildren]
+  hotelServicesChildrens: [HotelServicesChildren]
+  hotelServicesEntertainment: [HotelServicesEntertainment]
+  hotelServicesEntertainments: [HotelServicesEntertainment]
+  hotelServicesGeneral: [HotelServicesGeneral]
+  hotelServicesGenerals: [HotelServicesGeneral]
+  hotelServicesInTheRoom: [HotelServicesInTheRoom]
+  hotelServicesInTheRooms: [HotelServicesInTheRoom]
+  hotelServicesInternet: [HotelServicesInternet]
+  hotelServicesInternets: [HotelServicesInternet]
+  hotelServicesMeal: [HotelServicesMeal]
+  hotelServicesMeals: [HotelServicesMeal]
+  hotelServicesParking: [HotelServicesParking]
+  hotelServicesParkings: [HotelServicesParking]
+  hotelServicesSanitaryMeasure: [HotelServicesSanitaryMeasure]
+  hotelServicesSanitaryMeasures: [HotelServicesSanitaryMeasure]
+  hotelServicesServicesAndAmenities: [HotelServicesServicesAndAmenity]
+  hotelServicesServicesAndAmenity: [HotelServicesServicesAndAmenity]
+  hotelServicesSport: [HotelServicesSport]
+  hotelServicesSports: [HotelServicesSport]
+  hotelServicesStaffSpeak: [HotelServicesStaffSpeak]
+  hotelServicesStaffSpeaks: [HotelServicesStaffSpeak]
+  hotelServicesTransfer: [HotelServicesTransfer]
+  hotelServicesTransfers: [HotelServicesTransfer]
+  id: Int!
+}
+
+type HotelServicesAnimal {
+  accommodationWithPetsIsPaidSeparately: String!
+  id: Int!
+  image: String!
+}
+
+type HotelServicesBeautyAndHealth {
+  beautySalonIsPaidSeparately: String!
+  firstAidKit: String!
+  id: Int!
+  image: String!
+  massageIsPaidSeparately: String!
+}
+
+type HotelServicesBusiness {
+  conferenceHall: String!
+  id: Int!
+  image: String!
+  organizationOfMeetingsAndBanquets: String!
+  videoRentalAndComputerEquipment: String!
+  xerox: String!
+}
+
+type HotelServicesChildren {
+  accommodationIsSuitableForFamiliesChildren: String!
+  babysittingAndChildCare: String!
+  childrensTvChannels: String!
+  id: Int!
+  image: String!
+}
+
+type HotelServicesEntertainment {
+  id: Int!
+  image: String!
+  suitableForFestiveEvents: String!
+}
+
+type HotelServicesGeneral {
+  airConditioning: String!
+  computer: String!
+  designHotel: String!
+  dishwasherCar: String!
+  earlyCheckIn: String!
+  elevator: String!
+  expeditedCheckInAndCheckOut: String!
+  fireExtinguisher: String!
+  fullDayHourFrontDesk: String!
+  heating: String!
+  id: Int!
+  image: String!
+  individualCheckInAndCheckOut: String!
+  lateCheckOut: String!
+  nonSmokingHotel: String!
+  washingMachine: String!
+}
+
+type HotelServicesInTheRoom {
+  bridalSuite: String!
+  cableTv: String!
+  familyRooms: String!
+  id: Int!
+  image: String!
+  musicCenter: String!
+  nonSmokingRooms: String!
+  refrigerator: String!
+  roomService: String!
+  roomsForAllergySufferers: String!
+  safeInTheRoom: String!
+  smokingRooms: String!
+  tv: String!
+  vipAmenitiesInTheRoom: String!
+}
+
+type HotelServicesInternet {
+  freeWiFi: String!
+  id: Int!
+  image: String!
+}
+
+type HotelServicesMeal {
+  breakfastInTheRoom: String!
+  freeTeaOrCoffee: String!
+  fullBoardIsPossible: String!
+  halfBoardIsPossible: String!
+  id: Int!
+  image: String!
+  kitchen: String!
+  microwave: String!
+  restaurant: String!
+}
+
+type HotelServicesParking {
+  id: Int!
+  image: String!
+  parkingIsPaidSeparately: String!
+}
+
+type HotelServicesSanitaryMeasure {
+  enhancedDisinfectionMeasures: String!
+  id: Int!
+  image: String!
+  personalProtectiveEquipmentForGuests: String!
+  personalProtectiveEquipmentForStaff: String!
+  temperatureControlForGuests: String!
+  temperatureControlForStaff: String!
+}
+
+type HotelServicesServicesAndAmenity {
+  conciergeServices: String!
+  dryCleaningIsPaidSeparately: String!
+  hairDryerOnRequest: String!
+  id: Int!
+  image: String!
+  iron: String!
+  ironingFacilities: String!
+  ironingServicesArePaidSeparately: String!
+  laundryIsPaidSeparately: String!
+  luggageStorage: String!
+  telephone: String!
+}
+
+type HotelServicesSport {
+  gym: String!
+  id: Int!
+  image: String!
+}
+
+type HotelServicesStaffSpeak {
+  id: Int!
+  image: String!
+  inEnglish: String!
+  inRussian: String!
+}
+
+type HotelServicesTransfer {
+  id: Int!
+  image: String!
+  transfer: String!
+}
+
+type Mutation {
+  createHotel(createHotelInput: CreateHotelInput!): Hotel!
+  createHotelService(createHotelServiceInput: CreateHotelServiceInput!): HotelService!
+  createHotelServicesAnimal(createHotelServicesAnimalInput: CreateHotelServicesAnimalInput!): HotelServicesAnimal!
+  createHotelServicesBeautyAndHealth(createHotelServicesBeautyAndHealthInput: CreateHotelServicesBeautyAndHealthInput!): HotelServicesBeautyAndHealth!
+  createHotelServicesBusiness(createHotelServicesBusinessInput: CreateHotelServicesBusinessInput!): HotelServicesBusiness!
+  createHotelServicesChild(createHotelServicesChildrenInput: CreateHotelServicesChildrenInput!): HotelServicesChildren!
+  createHotelServicesEntertainment(createHotelServicesEntertainmentInput: CreateHotelServicesEntertainmentInput!): HotelServicesEntertainment!
+  createHotelServicesGeneral(createHotelServicesGeneralInput: CreateHotelServicesGeneralInput!): HotelServicesGeneral!
+  createHotelServicesInTheRoom(createHotelServicesInTheRoomInput: CreateHotelServicesInTheRoomInput!): HotelServicesInTheRoom!
+  createHotelServicesInternet(createHotelServicesInternetInput: CreateHotelServicesInternetInput!): HotelServicesInternet!
+  createHotelServicesMeal(createHotelServicesMealInput: CreateHotelServicesMealInput!): HotelServicesMeal!
+  createHotelServicesParking(createHotelServicesParkingInput: CreateHotelServicesParkingInput!): HotelServicesParking!
+  createHotelServicesSanitaryMeasure(createHotelServicesSanitaryMeasureInput: CreateHotelServicesSanitaryMeasureInput!): HotelServicesSanitaryMeasure!
+  createHotelServicesServicesAndAmenity(createHotelServicesServicesAndAmenityInput: CreateHotelServicesServicesAndAmenityInput!): HotelServicesServicesAndAmenity!
+  createHotelServicesSport(createHotelServicesSportInput: CreateHotelServicesSportInput!): HotelServicesSport!
+  createHotelServicesStaffSpeak(createHotelServicesStaffSpeakInput: CreateHotelServicesStaffSpeakInput!): HotelServicesStaffSpeak!
+  createHotelServicesTransfer(createHotelServicesTransferInput: CreateHotelServicesTransferInput!): HotelServicesTransfer!
+  createReviewHotel(createReviewHotelInput: CreateReviewHotelInput!): ReviewHotel!
+  createReviewRoom(createReviewRoomInput: CreateReviewRoomInput!): ReviewRoom!
+  createRoom(createRoomInput: CreateRoomInput!): Room!
+  createRoomService(createRoomServiceInput: CreateRoomServiceInput!): RoomService!
+  removeHotel(id: Int!): Hotel!
+  removeHotelService(id: Int!): HotelService!
+  removeHotelServicesAnimal(id: Int!): HotelServicesAnimal!
+  removeHotelServicesBeautyAndHealth(id: Int!): HotelServicesBeautyAndHealth!
+  removeHotelServicesBusiness(id: Int!): HotelServicesBusiness!
+  removeHotelServicesChild(id: Int!): HotelServicesChildren!
+  removeHotelServicesEntertainment(id: Int!): HotelServicesEntertainment!
+  removeHotelServicesGeneral(id: Int!): HotelServicesGeneral!
+  removeHotelServicesInTheRoom(id: Int!): HotelServicesInTheRoom!
+  removeHotelServicesInternet(id: Int!): HotelServicesInternet!
+  removeHotelServicesMeal(id: Int!): HotelServicesMeal!
+  removeHotelServicesParking(id: Int!): HotelServicesParking!
+  removeHotelServicesSanitaryMeasure(id: Int!): HotelServicesSanitaryMeasure!
+  removeHotelServicesServicesAndAmenity(id: Int!): HotelServicesServicesAndAmenity!
+  removeHotelServicesSport(id: Int!): HotelServicesSport!
+  removeHotelServicesStaffSpeak(id: Int!): HotelServicesStaffSpeak!
+  removeHotelServicesTransfer(id: Int!): HotelServicesTransfer!
+  removeReviewHotel(id: Int!): ReviewHotel!
+  removeReviewRoom(id: Int!): ReviewRoom!
+  removeRoom(id: Int!): Room!
+  removeRoomService(id: Int!): RoomService!
+  updateHotel(updateHotelInput: UpdateHotelInput!): Hotel!
+  updateHotelService(updateHotelServiceInput: UpdateHotelServiceInput!): HotelService!
+  updateHotelServicesAnimal(updateHotelServicesAnimalInput: UpdateHotelServicesAnimalInput!): HotelServicesAnimal!
+  updateHotelServicesBeautyAndHealth(updateHotelServicesBeautyAndHealthInput: UpdateHotelServicesBeautyAndHealthInput!): HotelServicesBeautyAndHealth!
+  updateHotelServicesBusiness(updateHotelServicesBusinessInput: UpdateHotelServicesBusinessInput!): HotelServicesBusiness!
+  updateHotelServicesChildren(updateHotelServicesChildrenInput: UpdateHotelServicesChildrenInput!): HotelServicesChildren!
+  updateHotelServicesEntertainment(updateHotelServicesEntertainmentInput: UpdateHotelServicesEntertainmentInput!): HotelServicesEntertainment!
+  updateHotelServicesGeneral(updateHotelServicesGeneralInput: UpdateHotelServicesGeneralInput!): HotelServicesGeneral!
+  updateHotelServicesInTheRoom(updateHotelServicesInTheRoomInput: UpdateHotelServicesInTheRoomInput!): HotelServicesInTheRoom!
+  updateHotelServicesInternet(updateHotelServicesInternetInput: UpdateHotelServicesInternetInput!): HotelServicesInternet!
+  updateHotelServicesMeal(updateHotelServicesMealInput: UpdateHotelServicesMealInput!): HotelServicesMeal!
+  updateHotelServicesParking(updateHotelServicesParkingInput: UpdateHotelServicesParkingInput!): HotelServicesParking!
+  updateHotelServicesSanitaryMeasure(updateHotelServicesSanitaryMeasureInput: UpdateHotelServicesSanitaryMeasureInput!): HotelServicesSanitaryMeasure!
+  updateHotelServicesServicesAndAmenity(updateHotelServicesServicesAndAmenityInput: UpdateHotelServicesServicesAndAmenityInput!): HotelServicesServicesAndAmenity!
+  updateHotelServicesSport(updateHotelServicesSportInput: UpdateHotelServicesSportInput!): HotelServicesSport!
+  updateHotelServicesStaffSpeak(updateHotelServicesStaffSpeakInput: UpdateHotelServicesStaffSpeakInput!): HotelServicesStaffSpeak!
+  updateHotelServicesTransfer(updateHotelServicesTransferInput: UpdateHotelServicesTransferInput!): HotelServicesTransfer!
+  updateReviewHotel(updateReviewHotelInput: UpdateReviewHotelInput!): ReviewHotel!
+  updateReviewRoom(updateReviewRoomInput: UpdateReviewRoomInput!): ReviewRoom!
+  updateRoom(updateRoomInput: UpdateRoomInput!): Room!
+  updateRoomService(updateRoomServiceInput: UpdateRoomServiceInput!): RoomService!
+}
+
+type Query {
+  hotel(id: Int!): Hotel!
+  hotelService(id: Int!): HotelService!
+  hotelServices: [HotelService!]!
+  hotelServicesAnimal(id: Int!): HotelServicesAnimal!
+  hotelServicesAnimals: [HotelServicesAnimal!]!
+  hotelServicesBeautyAndHealth(id: Int!): HotelServicesBeautyAndHealth!
+  hotelServicesBeautyAndHealthMany: [HotelServicesBeautyAndHealth!]!
+  hotelServicesBusiness(id: Int!): HotelServicesBusiness!
+  hotelServicesBusinessMany: [HotelServicesBusiness!]!
+  hotelServicesChildren(id: Int!): HotelServicesChildren!
+  hotelServicesChildrens: [HotelServicesChildren!]!
+  hotelServicesEntertainment(id: Int!): HotelServicesEntertainment!
+  hotelServicesEntertainments: [HotelServicesEntertainment!]!
+  hotelServicesGeneral(id: Int!): HotelServicesGeneral!
+  hotelServicesGenerals: [HotelServicesGeneral!]!
+  hotelServicesInTheRoom(id: Int!): HotelServicesInTheRoom!
+  hotelServicesInTheRooms: [HotelServicesInTheRoom!]!
+  hotelServicesInternet(id: Int!): HotelServicesInternet!
+  hotelServicesInternetMany: [HotelServicesInternet!]!
+  hotelServicesMeal(id: Int!): HotelServicesMeal!
+  hotelServicesMeals: [HotelServicesMeal!]!
+  hotelServicesParking(id: Int!): HotelServicesParking!
+  hotelServicesParkingMany: [HotelServicesParking!]!
+  hotelServicesSanitaryMeasure(id: Int!): HotelServicesSanitaryMeasure!
+  hotelServicesSanitaryMeasures: [HotelServicesSanitaryMeasure!]!
+  hotelServicesServicesAndAmenities: [HotelServicesServicesAndAmenity!]!
+  hotelServicesServicesAndAmenity(id: Int!): HotelServicesServicesAndAmenity!
+  hotelServicesSport(id: Int!): HotelServicesSport!
+  hotelServicesSports: [HotelServicesSport!]!
+  hotelServicesStaffSpeak(id: Int!): HotelServicesStaffSpeak!
+  hotelServicesStaffSpeaks: [HotelServicesStaffSpeak!]!
+  hotelServicesTransfer(id: Int!): HotelServicesTransfer!
+  hotelServicesTransferMany: [HotelServicesTransfer!]!
+  hotels(address: String, city: String, country: String, description: String, name: String, services: String, sorting: String, stars: Int, type: String): [Hotel!]!
+  reviewHotel(id: Int!): ReviewHotel!
+  reviewHotels: [ReviewHotel!]!
+  reviewRoom(id: Int!): ReviewRoom!
+  reviewRooms: [ReviewRoom!]!
+  room(id: Int!): Room!
+  roomService(id: Int!): RoomService!
+  roomServices: [RoomService!]!
+  rooms: [Room!]!
+}
+
+type ReviewHotel {
+  avatar: String!
+  country: String!
+  date: DateTime!
+  id: Int!
+  name: String!
+  rating: Int!
+  reviews: String!
+}
+
+type ReviewRoom {
+  avatar: String!
+  country: String!
+  date: String!
+  name: String!
+  rating: Int!
+  reviews: String!
+}
+
+type Room {
+  cost: Int!
+  description: String!
+  id: Int!
+  name: String!
+  numberOfGuests: Int!
+  photo: [String!]!
+}
+
+type RoomService {
+  pool: [String!]!
+}
+
+input UpdateHotelInput {
+  additionalInfo: String
+  address: String
+  city: String
+  country: String
+  description: String
+  id: Int!
+  legalAddress: String
+  name: String
+  photo: [String!]
+  policy: [String!]
+  stars: Int
+  type: String
+}
+
+input UpdateHotelServiceInput {
+  hotelId: Int
+  id: Int!
+}
+
+input UpdateHotelServicesAnimalInput {
+  accommodationWithPetsIsPaidSeparately: String
+  id: Int!
+  image: String
+}
+
+input UpdateHotelServicesBeautyAndHealthInput {
+  beautySalonIsPaidSeparately: String
+  firstAidKit: String
+  id: Int!
+  image: String
+  massageIsPaidSeparately: String
+}
+
+input UpdateHotelServicesBusinessInput {
+  conferenceHall: String
+  id: Int!
+  image: String
+  organizationOfMeetingsAndBanquets: String
+  videoRentalAndComputerEquipment: String
+  xerox: String
+}
+
+input UpdateHotelServicesChildrenInput {
+  accommodationIsSuitableForFamiliesChildren: String
+  babysittingAndChildCare: String
+  childrensTvChannels: String
+  id: Int!
+  image: String
+}
+
+input UpdateHotelServicesEntertainmentInput {
+  id: Int!
+  image: String
+  suitableForFestiveEvents: String
+}
+
+input UpdateHotelServicesGeneralInput {
+  airConditioning: String
+  computer: String
+  designHotel: String
+  dishwasherCar: String
+  earlyCheckIn: String
+  elevator: String
+  expeditedCheckInAndCheckOut: String
+  fireExtinguisher: String
+  fullDayHourFrontDesk: String
+  heating: String
+  id: Int!
+  image: String
+  individualCheckInAndCheckOut: String
+  lateCheckOut: String
+  nonSmokingHotel: String
+  washingMachine: String
+}
+
+input UpdateHotelServicesInTheRoomInput {
+  bridalSuite: String
+  cableTv: String
+  familyRooms: String
+  id: Int!
+  image: String
+  musicCenter: String
+  nonSmokingRooms: String
+  refrigerator: String
+  roomService: String
+  roomsForAllergySufferers: String
+  safeInTheRoom: String
+  smokingRooms: String
+  tv: String
+  vipAmenitiesInTheRoom: String
+}
+
+input UpdateHotelServicesInternetInput {
+  freeWiFi: String
+  id: Int!
+  image: String
+}
+
+input UpdateHotelServicesMealInput {
+  breakfastInTheRoom: String
+  freeTeaOrCoffee: String
+  fullBoardIsPossible: String
+  halfBoardIsPossible: String
+  id: Int!
+  image: String
+  kitchen: String
+  microwave: String
+  restaurant: String
+}
+
+input UpdateHotelServicesParkingInput {
+  id: Int!
+  image: String
+  parkingIsPaidSeparately: String
+}
+
+input UpdateHotelServicesSanitaryMeasureInput {
+  enhancedDisinfectionMeasures: String
+  id: Int!
+  image: String
+  personalProtectiveEquipmentForGuests: String
+  personalProtectiveEquipmentForStaff: String
+  temperatureControlForGuests: String
+  temperatureControlForStaff: String
+}
+
+input UpdateHotelServicesServicesAndAmenityInput {
+  conciergeServices: String
+  dryCleaningIsPaidSeparately: String
+  hairDryerOnRequest: String
+  id: Int!
+  image: String
+  iron: String
+  ironingFacilities: String
+  ironingServicesArePaidSeparately: String
+  laundryIsPaidSeparately: String
+  luggageStorage: String
+  telephone: String
+}
+
+input UpdateHotelServicesSportInput {
+  gym: String
+  id: Int!
+  image: String
+}
+
+input UpdateHotelServicesStaffSpeakInput {
+  id: Int!
+  image: String
+  inEnglish: String
+  inRussian: String
+}
+
+input UpdateHotelServicesTransferInput {
+  id: Int!
+  image: String!
+  transfer: String
+}
+
+input UpdateReviewHotelInput {
+  avatar: String
+  country: String
+  date: DateTime
+  id: Int!
+  name: String
+  rating: Int
+  reviews: String
+}
+
+input UpdateReviewRoomInput {
+  avatar: String
+  country: String
+  date: String
+  id: Int!
+  name: String
+  rating: Int
+  reviews: String
+}
+
+input UpdateRoomInput {
+  cost: Int
+  description: String
+  id: Int!
+  name: String
+  numberOfGuests: Int
+  photo: [String!]
+}
+
+input UpdateRoomServiceInput {
+  id: Int!
+  pool: [String!]
+}

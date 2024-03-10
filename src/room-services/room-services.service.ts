@@ -1,42 +1,32 @@
-// nest
 import { Injectable } from '@nestjs/common';
-
-// service
-import { PrismaService } from 'src/prisma.service';
-import {
-  CreateRoomServicesDto,
-  DeleteRoomServicesDto,
-  GetOneRoomServicesDto,
-  UpdateRoomServicesDto,
-} from './dto/room-services.dto';
+import { CreateRoomServiceInput } from './dto/create-room-service.input';
+import { UpdateRoomServiceInput } from './dto/update-room-service.input';
+import { PrismaService } from 'nestjs-prisma';
 
 @Injectable()
 export class RoomServicesService {
   constructor(private prisma: PrismaService) { }
 
-  getAll() {
+  findAll() {
     return this.prisma.roomServices.findMany();
   }
 
-  getOne(getOneDto: GetOneRoomServicesDto) {
-    return this.prisma.roomServices.findFirst({ where: { id: +getOneDto.id } });
+  findOne(id: number) {
+    return this.prisma.roomServices.findFirst({ where: { id } });
   }
 
-  createRoomServices(createDto: CreateRoomServicesDto) {
-    return this.prisma.roomServices.create({ data: createDto });
+  create(createRoomServiceInput: CreateRoomServiceInput) {
+    return this.prisma.roomServices.create({ data: createRoomServiceInput });
   }
 
-  updateRoomServices(
-    updateParams: UpdateRoomServicesDto,
-    updateDto: UpdateRoomServicesDto,
-  ) {
+  update(id: number, updateRoomServiceInput: UpdateRoomServiceInput) {
     return this.prisma.roomServices.update({
-      where: { id: +updateParams.id },
-      data: updateDto,
+      where: { id },
+      data: updateRoomServiceInput,
     });
   }
 
-  deleteRoomServices(deleteParams: DeleteRoomServicesDto) {
-    return this.prisma.roomServices.delete({ where: { id: +deleteParams.id } });
+  remove(id: number) {
+    return this.prisma.roomServices.delete({ where: { id } });
   }
 }

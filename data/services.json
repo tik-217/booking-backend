@@ -1,0 +1,97 @@
+{
+  "General": [
+    "Design Hotel",
+    "Individual check-in and check-out",
+    "Computer",
+    "Air conditioning",
+    "24-hour front desk",
+    "Elevator",
+    "Fire Extinguisher",
+    "Non-smoking hotel",
+    "Heating",
+    "Late check-out",
+    "Dishwasher car",
+    "Early check-in",
+    "Washing machine",
+    "Expedited check-in and check-out"
+  ],
+  "In the rooms": [
+    "VIP amenities in the room",
+    "Cable TV",
+    "Bridal Suite",
+    "Music center",
+    "Rooms for allergy sufferers",
+    "Smoking rooms",
+    "Non-smoking rooms",
+    "Room service",
+    "Safe (in the room)",
+    "Family rooms",
+    "TV",
+    "Refrigerator"
+  ],
+  "Services and amenities": [
+    "Ironing facilities",
+    "Ironing services are paid separately",
+    "Laundry is paid separately",
+    "Telephone",
+    "Concierge services",
+    "Iron",
+    "Hair dryer (on request)",
+    "Dry cleaning is paid separately",
+    "Luggage storage"
+  ],
+  "Meals": [
+    "Free tea/coffee",
+    "Full board is possible",
+    "Half board is possible",
+    "Breakfast in the room",
+    "Kitchen",
+    "Microwave",
+    "Restaurant"
+  ],
+  "Internet": [
+    "Free Wi-Fi"
+  ],
+  "Transfer": [
+    "Transfer is paid separately"
+  ],
+  "Staff speaks": [
+    "in English",
+    "in Russian"
+  ],
+  "Entertainment": [
+    "Suitable for festive events"
+  ],
+  "Parking": [
+    "Parking is paid separately"
+  ],
+  "Business": [
+    "Conference-hall",
+    "Xerox",
+    "Organization of meetings and banquets",
+    "Video rental- and computer equipment"
+  ],
+  "Sports": [
+    "Gym"
+  ],
+  "Beauty and health": [
+    "First aid kit",
+    "Massage is paid separately",
+    "Beauty salon is paid separately"
+  ],
+  "Children": [
+    "Children's TV channels",
+    "Accommodation is suitable for families/children",
+    "Babysitting and child care"
+  ],
+  "Animals": [
+    "Accommodation with pets is paid separately"
+  ],
+  "Sanitary measures": [
+    "Personal protective equipment for guests",
+    "Personal protective equipment for staff",
+    "Temperature control for guests",
+    "Temperature control for staff",
+    "Enhanced disinfection measures"
+  ]
+}

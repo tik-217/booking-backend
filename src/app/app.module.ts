@@ -1,23 +1,35 @@
-// nest
-import { Module } from '@nestjs/common';
-
-// controller
-import { AppController } from './app.controller';
-
-// service
-import { AppService } from './app.service';
-
-// modules
-import { HotelModule } from 'src/hotel/hotel.module';
-import { ConfigModule } from '@nestjs/config';
-import { RoomModule } from 'src/room/room.module';
-import { RoomServicesModule } from 'src/room-services/room-services.module';
+import { Module, ConfigModule, AppController, AppService, HotelModule, HotelServicesModule, HotelServicesInTheRoomsModule, HotelServicesServicesAndAmenitiesModule, HotelServicesAnimalsModule, HotelServicesBeautyAndHealthModule, HotelServicesEntertainmentModule, HotelServicesGeneralModule, HotelServicesInternetModule, HotelServicesMealsModule, HotelServicesParkingModule, HotelServicesSanitaryMeasuresModule, HotelServicesSportsModule, HotelServicesStaffSpeaksModule, HotelServicesTransferModule, HotelServicesBusinessModule, HotelServicesChildrenModule, ReviewHotelsModule, ReviewRoomsModule, RoomServicesModule, RoomsModule, PrismaModule, UploadImageModule, GraphQLModule, ApolloDriver, ApolloDriverConfig, join } from "./index";
 
 @Module({
   imports: [
-    RoomServicesModule,
-    RoomModule,
+    GraphQLModule.forRoot<ApolloDriverConfig>({
+      driver: ApolloDriver,
+      autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+      sortSchema: true,
+    }),
+    PrismaModule,
     HotelModule,
+    HotelServicesModule,
+    HotelServicesAnimalsModule,
+    HotelServicesBeautyAndHealthModule,
+    HotelServicesBusinessModule,
+    HotelServicesChildrenModule,
+    HotelServicesEntertainmentModule,
+    HotelServicesGeneralModule,
+    HotelServicesInTheRoomsModule,
+    HotelServicesInternetModule,
+    HotelServicesMealsModule,
+    HotelServicesParkingModule,
+    HotelServicesSanitaryMeasuresModule,
+    HotelServicesServicesAndAmenitiesModule,
+    HotelServicesSportsModule,
+    HotelServicesStaffSpeaksModule,
+    HotelServicesTransferModule,
+    ReviewHotelsModule,
+    ReviewRoomsModule,
+    RoomServicesModule,
+    RoomsModule,
+    UploadImageModule,
     ConfigModule.forRoot(),
   ],
   controllers: [AppController],

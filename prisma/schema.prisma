@@ -2,7 +2,8 @@
 // learn more about it in the docs: https://pris.ly/d/prisma-schema
 
 generator client {
-  provider = "prisma-client-js"
+  provider        = "prisma-client-js"
+  previewFeatures = ["relationJoins"]
 }
 
 datasource db {
@@ -10,74 +11,288 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
-// written
 model Hotel {
   id             Int             @id @default(autoincrement())
   name           String
   stars          Int
+  type           String
   description    String
   additionalInfo String?
   photo          String[]
-  hotelServices  HotelServices[]
-  rooms          Room[]
   country        String
   city           String?
-  address        String          @unique
-  reviewHotels   ReviewHotels[]
-  legalAddress   String[]        @unique
-  policy         DateTime[]
+  address        String
+  legalAddress   String
+  policy         String[]
+  rooms          Rooms[]
+  hotelServices  HotelServices[]
+
+  reviewHotels ReviewHotels[]
 }
 
-// written
-model Room {
-  id             Int            @id @default(autoincrement())
+// HotelServices //
+
+model HotelServices {
+  id Int @id @default(autoincrement())
+
+  Hotel   Hotel? @relation(fields: [hotelId], references: [id])
+  hotelId Int?
+
+  hotelServicesAnimals              HotelServicesAnimals[]
+  hotelServicesBeautyAndHealth      HotelServicesBeautyAndHealth[]
+  hotelServicesBusiness             HotelServicesBusiness[]
+  hotelServicesChildren             HotelServicesChildren[]
+  hotelServicesEntertainment        HotelServicesEntertainment[]
+  hotelServicesGeneral              HotelServicesGeneral[]
+  hotelServicesInTheRooms           HotelServicesInTheRooms[]
+  hotelServicesInternet             HotelServicesInternet[]
+  hotelServicesMeals                HotelServicesMeals[]
+  hotelServicesParking              HotelServicesParking[]
+  hotelServicesSanitaryMeasures     HotelServicesSanitaryMeasures[]
+  hotelServicesServicesAndAmenities HotelServicesServicesAndAmenities[]
+  hotelServicesSports               HotelServicesSports[]
+  hotelServicesStaffSpeaks          HotelServicesStaffSpeaks[]
+  hotelServicesTransfer             HotelServicesTransfer[]
+}
+
+model HotelServicesAnimals {
+  id                                    Int     @id @default(autoincrement())
+  accommodationWithPetsIsPaidSeparately String
+  image                                 String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesBeautyAndHealth {
+  id                          Int     @id @default(autoincrement())
+  firstAidKit                 String
+  massageIsPaidSeparately     String
+  beautySalonIsPaidSeparately String
+  image                       String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesBusiness {
+  id                                Int     @id @default(autoincrement())
+  conferenceHall                    String
+  xerox                             String
+  organizationOfMeetingsAndBanquets String
+  videoRentalAndComputerEquipment   String
+  image                             String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesChildren {
+  id                                         Int     @id @default(autoincrement())
+  childrensTvChannels                        String
+  accommodationIsSuitableForFamiliesChildren String
+  babysittingAndChildCare                    String
+  image                                      String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesEntertainment {
+  id                       Int     @id @default(autoincrement())
+  suitableForFestiveEvents String
+  image                    String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesGeneral {
+  id                           Int            @id @default(autoincrement())
+  designHotel                  String
+  individualCheckInAndCheckOut String
+  computer                     String
+  airConditioning              String
+  fullDayHourFrontDesk         String
+  elevator                     String
+  fireExtinguisher             String
+  nonSmokingHotel              String
+  heating                      String
+  lateCheckOut                 String
+  dishwasherCar                String
+  earlyCheckIn                 String
+  washingMachine               String
+  expeditedCheckInAndCheckOut  String
+  image                        String
+  HotelServices                HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId              Int?
+}
+
+model HotelServicesInTheRooms {
+  id                       Int     @id @default(autoincrement())
+  vipAmenitiesInTheRoom    String
+  cableTv                  String
+  bridalSuite              String
+  musicCenter              String
+  roomsForAllergySufferers String
+  smokingRooms             String
+  nonSmokingRooms          String
+  roomService              String
+  safeInTheRoom            String
+  familyRooms              String
+  tv                       String
+  refrigerator             String
+  image                    String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesInternet {
+  id       Int     @id @default(autoincrement())
+  freeWiFi String
+  image    String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesMeals {
+  id                  Int     @id @default(autoincrement())
+  freeTeaOrCoffee     String
+  fullBoardIsPossible String
+  halfBoardIsPossible String
+  breakfastInTheRoom  String
+  kitchen             String
+  microwave           String
+  restaurant          String
+  image               String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesParking {
+  id                      Int     @id @default(autoincrement())
+  parkingIsPaidSeparately String
+  image                   String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesSanitaryMeasures {
+  id                                   Int     @id @default(autoincrement())
+  personalProtectiveEquipmentForGuests String
+  personalProtectiveEquipmentForStaff  String
+  temperatureControlForGuests          String
+  temperatureControlForStaff           String
+  enhancedDisinfectionMeasures         String
+  image                                String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesServicesAndAmenities {
+  id                               Int     @id @default(autoincrement())
+  ironingFacilities                String
+  ironingServicesArePaidSeparately String
+  laundryIsPaidSeparately          String
+  telephone                        String
+  conciergeServices                String
+  iron                             String
+  hairDryerOnRequest               String
+  dryCleaningIsPaidSeparately      String
+  luggageStorage                   String
+  image                            String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesSports {
+  id    Int     @id @default(autoincrement())
+  gym   String
+  image String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesStaffSpeaks {
+  id        Int     @id @default(autoincrement())
+  inEnglish String
+  inRussian String
+  image     String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+model HotelServicesTransfer {
+  id       Int     @id @default(autoincrement())
+  transfer String
+  image    String
+
+  HotelServices   HotelServices? @relation(fields: [hotelServicesId], references: [id])
+  hotelServicesId Int?
+}
+
+// /// HotelServices /// //
+
+model ReviewHotels {
+  id      Int      @id @default(autoincrement())
+  avatar  String
+  name    String
+  rating  Int
+  reviews String
+  date    DateTime @default(now())
+  country String
+
+  Hotel   Hotel? @relation(fields: [hotelId], references: [id])
+  hotelId Int?
+}
+
+model Rooms {
+  id             Int      @id @default(autoincrement())
   name           String
   cost           Int
   description    String
-  reviewRooms    ReviewRooms[]
-  roomServices   RoomServices[]
   photo          String[]
   numberOfGuests Int
 
   Hotel   Hotel? @relation(fields: [hotelId], references: [id])
-  hotelId Int
+  hotelId Int?
 
   favouritHotelsOrRooms   User?   @relation("favouritHotelsOrRoomsId", fields: [favouritHotelsOrRoomsId], references: [id])
   favouritHotelsOrRoomsId String?
 
   historyOfBooking   User?   @relation("historyOfBookingId", fields: [historyOfBookingId], references: [id])
   historyOfBookingId String?
+
+  RoomServices   RoomServices? @relation(fields: [roomServicesId], references: [id])
+  roomServicesId Int?
+
+  ReviewRooms   ReviewRooms? @relation(fields: [reviewRoomsId], references: [id])
+  reviewRoomsId Int?
 }
 
-// written
 model RoomServices {
   id   Int      @id @default(autoincrement())
   pool String[]
-
-  Room   Room? @relation(fields: [roomId], references: [id])
-  roomId Int?
-}
-
-model HotelServices {
-  id      Int      @id @default(autoincrement())
-  terrace String[]
-
-  Hotel    Hotel @relation(fields: [hotelsId], references: [id])
-  hotelsId Int
-}
-
-model ReviewHotels {
-  id Int @id @default(autoincrement())
-
-  Hotel    Hotel? @relation(fields: [hotelsId], references: [id])
-  hotelsId Int
+  room Rooms[]
 }
 
 model ReviewRooms {
-  id Int @id @default(autoincrement())
-
-  Room    Room? @relation(fields: [roomsId], references: [id])
-  roomsId Int?
+  id      Int      @id @default(autoincrement())
+  avatar  String
+  name    String
+  rating  Int
+  reviews String
+  date    DateTime @default(now())
+  country String
+  room    Rooms[]
 }
 
 model Account {
@@ -114,13 +329,13 @@ model User {
   gender        String?
   city          String?
   email         String?   @unique
-  emailVerified DateTime?
+  emailVerified DateTime? @default(now())
   phone         String?
-  dateOfBirth   DateTime?
+  dateOfBirth   DateTime? @default(now())
   image         String?
 
-  favouritHotelsOrRooms Room[] @relation("favouritHotelsOrRoomsId")
-  historyOfBooking      Room[] @relation("historyOfBookingId")
+  favouritHotelsOrRooms Rooms[] @relation("favouritHotelsOrRoomsId")
+  historyOfBooking      Rooms[] @relation("historyOfBookingId")
 
   accounts Account[]
   sessions Session[]

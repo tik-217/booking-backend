@@ -1,0 +1,59 @@
+{
+  "Accommodation features": [
+    "Suitable for children",
+    "For guests with disabilities",
+    "Pets allowed",
+    "Smoking allowed"
+  ],
+  "Type of accommodation": [
+    "Hotels, furnished rooms",
+    "Hostels, living quarters",
+    "Apartments, apartments",
+    "Apart-hotels",
+    "Guest houses",
+    "Cottages, villas, bungalows",
+    "Campsites",
+    "Glampings",
+    "Sanatoriums"
+  ],
+  "Meals": [
+    "Meals not included",
+    "Breakfast included",
+    "Breakfast + lunch or dinner included",
+    "Breakfast, lunch and dinner are included",
+    "All inclusive"
+  ],
+  "Rating based on reviews": [
+    "9 and above",
+    "8 and above",
+    "7 and above",
+    "6 and above",
+    "5 and above"
+  ],
+  "Payment and booking": [
+    "You do not need a card for booking",
+    "There is a free cancellation",
+    "Payment now",
+    "Payment on the spot"
+  ],
+  "Number rooms": [
+    "1 room",
+    "2 rooms",
+    "3 rooms",
+    "4 rooms",
+    "5 rooms",
+    "6 rooms"
+  ],
+  "Number of stars": [
+    "1",
+    "2",
+    "3",
+    "4",
+    "5",
+    "6"
+  ],
+  " Bed type": [
+    "Double bed",
+    "Separate beds"
+  ]
+}
